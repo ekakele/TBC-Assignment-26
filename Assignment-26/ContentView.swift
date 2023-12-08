@@ -18,7 +18,7 @@ struct ContentView: View {
         toDoList.filter{ !$0.isDone }.count
     }
     
-//    var totalNumberOfTasks = toDoList.count
+    //    var totalNumberOfTasks = toDoList.count
     
     func markAsDone(id: UUID) {
         if let index = toDoList.firstIndex(where: { $0.id == id }) {
@@ -62,7 +62,14 @@ struct ContentView: View {
                                     Circle()
                                         .frame(width: 15, height: 15)
                                         .foregroundColor(Color(red: 1.00, green: 0.46, blue: 0.23))
-                                        .offset(x: 10, y: 20)
+                                        .offset(x: 15, y: 20)
+                                        .overlay(
+                                            Text("\(numberOfUncompletedTasks)")
+                                                .font(.system(size: 9))
+                                                .foregroundColor(.white)
+                                                .offset(x: 15, y: 20)
+                                        )
+                                    
                                 )
                         )
                 }
