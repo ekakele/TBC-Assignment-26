@@ -53,7 +53,7 @@ struct ToDoList {
         )
     ]
     
-    //show marked as done items first
+    //show show completed first
     static var sortedDummyData: [ToDo] {
            dummyData.sorted { $0.isDone && !$1.isDone }
        }

@@ -10,11 +10,21 @@ import SwiftUI
 struct ContentView: View {
     @State var toDoList = ToDoList.sortedDummyData
     
+    var numberOfCompletedTasks: Int {
+        toDoList.filter{ $0.isDone }.count
+    }
+    
+    var numberOfUncompletedTasks: Int {
+        toDoList.filter{ !$0.isDone }.count
+    }
+    
+//    var totalNumberOfTasks = toDoList.count
+    
     func markAsDone(id: UUID) {
         if let index = toDoList.firstIndex(where: { $0.id == id }) {
             toDoList[index].isDone.toggle() //same as: = !toDoList[index].isDone
             
-            //show marked as done items first
+            //show completed first
             toDoList.sort { $0.isDone && !$1.isDone }
         }
     }
@@ -28,7 +38,7 @@ struct ContentView: View {
             VStack(alignment: .leading) {
                 //header stack
                 HStack {
-                    Text("You have 3 tasks to complete")
+                    Text("You have \(numberOfUncompletedTasks) tasks to complete")
                         .font(.system(size: 25))
                         .fontWeight(.bold)
                         .foregroundColor(.white)
@@ -97,7 +107,7 @@ struct ContentView: View {
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     
-                    Text("3/6 Task Completed")
+                    Text("\(numberOfCompletedTasks)/\(toDoList.count) Task Completed")
                         .font(.body)
                         .foregroundColor(.white.opacity(0.8))
                     
