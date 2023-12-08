@@ -18,6 +18,10 @@ struct ContentView: View {
         toDoList.filter{ !$0.isDone }.count
     }
     
+    var progressValue: Float {
+        Float(numberOfCompletedTasks) / Float(toDoList.count)
+    }
+    
     func markAsDone(id: UUID) {
         if let index = toDoList.firstIndex(where: { $0.id == id }) {
             toDoList[index].isDone.toggle() //same as: = !toDoList[index].isDone
@@ -122,6 +126,14 @@ struct ContentView: View {
                         .fontWeight(.ultraLight)
                         .foregroundColor(.white.opacity(0.8))
                     
+                    //progress bar
+                    ProgressView(value: progressValue, total:  1.0)
+                        .tint(Color(red: 0.73, green: 0.51, blue: 0.87))
+                        .frame(width: 360, height: 20)
+                        .scaleEffect(x: 1, y: 5)
+                        .clipShape(RoundedRectangle(cornerRadius: 20))
+                        .background(Color(red: 0.73, green: 0.51, blue: 0.87).opacity(0.41)
+                            .clipShape(RoundedRectangle(cornerRadius: 20)))
                 }
                 .padding(15)
                 .frame(width: 397, height: 139)
