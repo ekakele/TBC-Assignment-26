@@ -11,20 +11,19 @@ struct ContentView: View {
     @State var toDoList = ToDoList.sortedDummyData
     
     func markAsDone(id: UUID) {
-            if let index = toDoList.firstIndex(where: { $0.id == id }) {
-                toDoList[index].isDone.toggle() //same as: = !toDoList[index].isDone
-                
-                //show marked as done items first
-                toDoList.sort { $0.isDone && !$1.isDone }
-            }
+        if let index = toDoList.firstIndex(where: { $0.id == id }) {
+            toDoList[index].isDone.toggle() //same as: = !toDoList[index].isDone
+            
+            //show marked as done items first
+            toDoList.sort { $0.isDone && !$1.isDone }
         }
-
+    }
+    
     
     var body: some View {
         ZStack {
             Color.yellow
                 .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-            
             
             VStack(alignment: .leading) {
                 //header stack
@@ -56,11 +55,13 @@ struct ContentView: View {
                                         .offset(x: 10, y: 20)
                                 )
                         )
-                }                
+                }
                 
                 //button
                 Button(action: {
-                    print("button pressed")
+                    for index in toDoList.indices {
+                        toDoList[index].isDone = true
+                    }
                 }, label: {
                     Text("Complete All")
                         .font(.system(size: 16))
@@ -95,7 +96,7 @@ struct ContentView: View {
                         .fontWeight(.medium)
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity, alignment: .leading)
-
+                    
                     Text("3/6 Task Completed")
                         .font(.body)
                         .foregroundColor(.white.opacity(0.8))
@@ -115,7 +116,7 @@ struct ContentView: View {
                 Text("Completed Tasks")
                     .font(.system(size: 22))
                     .foregroundColor(.white)
-
+                
                 List(toDoList) { toDo in
                     ListRowView(title: toDo.title, date: toDo.date, isDone: toDo.isDone, markAsDone: {
                         self.markAsDone(id: toDo.id)
@@ -124,8 +125,7 @@ struct ContentView: View {
                     .padding(.horizontal, -20) //negative padding
                 }
                 .listStyle(PlainListStyle())
-//                .background(Color.clear)
-
+                //                .background(Color.clear)
             }
             .padding(20)
             
@@ -152,12 +152,12 @@ struct ListRowView: View {
             Rectangle()
                 .fill(Color(red: 0.98, green: 0.85, blue: 1))
                 .frame(width: 15, height: 80)
-
-
-
+            
+            
+            
             //text stack
             VStack(alignment: .leading, spacing: 5) {
-
+                
                 Text(title)
                     .lineLimit(1)
                 //date stack
@@ -173,14 +173,11 @@ struct ListRowView: View {
             Spacer()
             
             Button(action: markAsDone, label: {
-                        Image(systemName: isDone ? "checkmark.circle.fill" : "circle")
-                            .resizable()
-                            .foregroundColor(.purple)
-                            .frame(width: 26, height: 26)
-                    })
-            
-            
-            
+                Image(systemName: isDone ? "checkmark.circle.fill" : "circle")
+                    .resizable()
+                    .foregroundColor(.purple)
+                    .frame(width: 26, height: 26)
+            })
         }
         .frame(width: .infinity, height: 80)
         .background(Color.orange)

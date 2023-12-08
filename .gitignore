@@ -1,0 +1,6 @@
+# Xcode
+*.xcuserstate
+xcuserdata/
+DerivedData/
+.DS_Store
+!default.xcworkspace
