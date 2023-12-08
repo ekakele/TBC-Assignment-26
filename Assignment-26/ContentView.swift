@@ -18,8 +18,6 @@ struct ContentView: View {
         toDoList.filter{ !$0.isDone }.count
     }
     
-    //    var totalNumberOfTasks = toDoList.count
-    
     func markAsDone(id: UUID) {
         if let index = toDoList.firstIndex(where: { $0.id == id }) {
             toDoList[index].isDone.toggle() //same as: = !toDoList[index].isDone
@@ -32,7 +30,7 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            Color.yellow
+            Color.black
                 .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
             
             VStack(alignment: .leading) {
@@ -43,31 +41,32 @@ struct ContentView: View {
                         .fontWeight(.bold)
                         .foregroundColor(.white)
                     
-                    Spacer(minLength: 152)
+                    Spacer(minLength: 120)
                     
                     //userAvatar
                     Image("avatarBackground")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 49, height: 49)
+                        .frame(width: 80, height: 80)
                         .overlay(
                             Image("userAvatar")
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
-                                .frame(width: 44, height: 45)
+                                .frame(width: 80, height: 80)
                                 .scaleEffect(1.8)
-                                .offset(y: 13)
+                                .offset(y: 24)
                                 .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
                                 .overlay(
                                     Circle()
-                                        .frame(width: 15, height: 15)
+                                        .frame(width: 20, height: 20)
                                         .foregroundColor(Color(red: 1.00, green: 0.46, blue: 0.23))
-                                        .offset(x: 15, y: 20)
+                                        .offset(x: 25, y: 25)
                                         .overlay(
                                             Text("\(numberOfUncompletedTasks)")
-                                                .font(.system(size: 9))
+                                                .font(.system(size: 15))
+                                                .bold()
                                                 .foregroundColor(.white)
-                                                .offset(x: 15, y: 20)
+                                                .offset(x: 25, y: 25)
                                         )
                                     
                                 )
@@ -138,11 +137,11 @@ struct ContentView: View {
                     ListRowView(title: toDo.title, date: toDo.date, isDone: toDo.isDone, markAsDone: {
                         self.markAsDone(id: toDo.id)
                     })
-                    .padding(.vertical, -10) //negative padding
+                    .padding(.vertical, -6) //negative padding
                     .padding(.horizontal, -20) //negative padding
+                    .listRowBackground(Color.clear) //super modifier <3 removes list's background color
                 }
                 .listStyle(PlainListStyle())
-                //                .background(Color.clear)
             }
             .padding(20)
             
@@ -177,13 +176,19 @@ struct ListRowView: View {
                 
                 Text(title)
                     .lineLimit(1)
+                    .foregroundColor(.white)
+                    .offset(x: 14)
                 //date stack
                 HStack {
                     Image(systemName: "calendar")
                         .resizable()
+                        .foregroundColor(.white)
                         .frame(width: 15, height: 17)
                     Text(date)
+                        .foregroundColor(.white)
                 }
+                .offset(x: 14)
+                
             }
             .padding(.vertical, 20)
             
@@ -196,8 +201,10 @@ struct ListRowView: View {
                     .frame(width: 26, height: 26)
             })
         }
+        .padding(.trailing, 11)
+        .foregroundColor(.clear)
         .frame(width: .infinity, height: 80)
-        .background(Color.orange)
+        .background(Color(red: 0.12, green: 0.12, blue: 0.12))
         .cornerRadius(8)
     }
 }
