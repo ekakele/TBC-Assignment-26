@@ -8,21 +8,23 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var toDoList = ToDoList.sortedDummyData
+    //MARK: Properties
+    @State private var toDoList = ToDoList.sortedDummyData
     
-    var numberOfCompletedTasks: Int {
+    private var numberOfCompletedTasks: Int {
         toDoList.filter{ $0.isDone }.count
     }
     
-    var numberOfUncompletedTasks: Int {
+    private var numberOfUncompletedTasks: Int {
         toDoList.filter{ !$0.isDone }.count
     }
     
-    var progressValue: Float {
+    private var progressValue: Float {
         Float(numberOfCompletedTasks) / Float(toDoList.count)
     }
     
-    func markAsDone(id: UUID) {
+    //MARK: Private Methods
+    private func markAsDone(id: UUID) {
         if let index = toDoList.firstIndex(where: { $0.id == id }) {
             toDoList[index].isDone.toggle()
             
@@ -30,6 +32,7 @@ struct ContentView: View {
         }
     }
     
+    //MARK: UI
     var body: some View {
         ZStack {
             Color.black
@@ -132,6 +135,7 @@ struct ContentView: View {
                     .font(.system(size: 22))
                     .foregroundColor(.white)
                 
+                //MARK: List
                 List(toDoList) { toDo in
                     ListRowView(title: toDo.title, date: toDo.date, isDone: toDo.isDone, markAsDone: {
                         self.markAsDone(id: toDo.id)
@@ -147,16 +151,20 @@ struct ContentView: View {
     }
 }
 
+//MARK: - Preview
 #Preview {
     ContentView()
 }
 
+//MARK: ListRowView
 struct ListRowView: View {
+    //MARK: Properties
     let title: String
     let date: String
     let isDone: Bool
     let markAsDone: () -> Void
     
+    //MARK: UI
     var body: some View {
         HStack {
             Rectangle()
