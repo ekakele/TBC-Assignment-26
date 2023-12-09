@@ -11,9 +11,6 @@
 		B5F4D0162B23504C00323278 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F4D0152B23504C00323278 /* ContentView.swift */; };
 		B5F4D0182B23504E00323278 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5F4D0172B23504E00323278 /* Assets.xcassets */; };
 		B5F4D01B2B23504E00323278 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5F4D01A2B23504E00323278 /* Preview Assets.xcassets */; };
-		B5F4D0232B2356C700323278 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B5F4D0222B2356C700323278 /* Roboto-Light.ttf */; };
-		B5F4D0252B2356DF00323278 /* InterTight-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B5F4D0242B2356DE00323278 /* InterTight-VariableFont_wght.ttf */; };
-		B5F4D0272B23576900323278 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B5F4D0262B23576900323278 /* Roboto-Bold.ttf */; };
 		B5F4D02C2B23890400323278 /* ToDoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F4D02B2B23890400323278 /* ToDoListViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -23,9 +20,6 @@
 		B5F4D0152B23504C00323278 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B5F4D0172B23504E00323278 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B5F4D01A2B23504E00323278 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		B5F4D0222B2356C700323278 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Light.ttf"; path = "../../../../../../../Downloads/Roboto/Roboto-Light.ttf"; sourceTree = "<group>"; };
-		B5F4D0242B2356DE00323278 /* InterTight-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "InterTight-VariableFont_wght.ttf"; path = "../../../../../../../Downloads/Inter_Tight/InterTight-VariableFont_wght.ttf"; sourceTree = "<group>"; };
-		B5F4D0262B23576900323278 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Bold.ttf"; path = "../../../../../../../Downloads/Roboto/Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		B5F4D02A2B2359C500323278 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B5F4D02B2B23890400323278 /* ToDoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -61,7 +55,6 @@
 			isa = PBXGroup;
 			children = (
 				B5F4D02A2B2359C500323278 /* Info.plist */,
-				B5F4D0212B23566D00323278 /* Fonts */,
 				B5F4D0132B23504C00323278 /* Assignment_26App.swift */,
 				B5F4D0152B23504C00323278 /* ContentView.swift */,
 				B5F4D02B2B23890400323278 /* ToDoListViewModel.swift */,
@@ -77,16 +70,6 @@
 				B5F4D01A2B23504E00323278 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		B5F4D0212B23566D00323278 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				B5F4D0262B23576900323278 /* Roboto-Bold.ttf */,
-				B5F4D0222B2356C700323278 /* Roboto-Light.ttf */,
-				B5F4D0242B2356DE00323278 /* InterTight-VariableFont_wght.ttf */,
-			);
-			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,9 +132,6 @@
 			files = (
 				B5F4D01B2B23504E00323278 /* Preview Assets.xcassets in Resources */,
 				B5F4D0182B23504E00323278 /* Assets.xcassets in Resources */,
-				B5F4D0272B23576900323278 /* Roboto-Bold.ttf in Resources */,
-				B5F4D0252B2356DF00323278 /* InterTight-VariableFont_wght.ttf in Resources */,
-				B5F4D0232B2356C700323278 /* Roboto-Light.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
