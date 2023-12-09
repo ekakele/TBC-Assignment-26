@@ -12,10 +12,6 @@ struct ToDo: Identifiable {
     let title: String
     let date: String
     var isDone: Bool
-    
-//    mutating func markAsDone(_ state: Bool) {
-//        isDone = state
-//    }
 }
 
 
@@ -53,9 +49,8 @@ struct ToDoList {
         )
     ]
     
-    //show show completed first
     static var sortedDummyData: [ToDo] {
-           dummyData.sorted { $0.isDone && !$1.isDone }
-       }
+        dummyData.sorted { $0.isDone && !$1.isDone }
+    }
 }
 
